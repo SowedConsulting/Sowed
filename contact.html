@@ -1,1 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact | Sowed Consulting, LLC</title>
+  <meta name="description" content="Contact Sowed Consulting, LLC to discuss Salesforce architecture, data migration, DevOps CI/CD, and automation testing." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+
+  <!-- Shared header injection point -->
+  <div id="site-header"></div>
+
+  <main class="page">
+    <div class="container page-hero">
+      <div class="page-kicker">Contact</div>
+      <h1>Let’s talk about your Salesforce roadmap.</h1>
+      <p class="page-sub">
+        Share what you’re trying to accomplish and we’ll respond with recommended next steps,
+        risks to watch, and a practical path forward.
+      </p>
+    </div>
+
+    <div class="container contact-grid">
+      <section class="contact-card" aria-label="Contact form">
+        <h2>Send a message</h2>
+        <p class="muted">
+          This form is static HTML. If you’re on GitHub Pages, you can wire it to Formspree,
+          Netlify Forms, or your own endpoint later.
+        </p>
+
+        <!-- Replace action with your form provider endpoint when ready -->
+        <form class="form" action="#" method="post">
+          <div class="field-row">
+            <label class="field">
+              <span>Name</span>
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" placeholder="you@company.com" required />
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Company (optional)</span>
+            <input type="text" name="company" placeholder="Company name" />
+          </label>
+
+          <label class="field">
+            <span>What do you need help with?</span>
+            <select name="topic" required>
+              <option value="" disabled selected>Select one</option>
+              <option>New org build</option>
+              <option>Revamp / modernization</option>
+              <option>Data migration</option>
+              <option>DevOps / CI/CD</option>
+              <option>Automation testing</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Message</span>
+            <textarea name="message" rows="6" placeholder="Briefly describe your current state, goals, timeline, and any constraints." required></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Send</button>
+            <a class="btn btn-ghost" href="/services.html">View services</a>
+          </div>
+
+          <p class="fineprint">
+            By submitting, you agree we may contact you about your request. We don’t sell your info.
+          </p>
+        </form>
+      </section>
+
+      <aside class="contact-card" aria-label="Contact details">
+        <h2>How we work</h2>
+        <div class="info-block">
+          <h3>Typical first call</h3>
+          <ul>
+            <li>Current-state overview</li>
+            <li>Constraints and timeline</li>
+            <li>Risks + quick wins</li>
+            <li>Next steps and engagement fit</li>
+          </ul>
+        </div>
+
+        <div class="info-block">
+          <h3>What helps us respond fast</h3>
+          <ul>
+            <li>Org count + user count</li>
+            <li>Key clouds / managed packages</li>
+            <li>Integration points</li>
+            <li>Release cadence and tooling</li>
+          </ul>
+        </div>
+
+        <div class="info-block">
+          <h3>Direct contact (optional)</h3>
+          <p class="muted">
+            If you want the site to show email/phone, add it here. (Leaving it out reduces spam.)
+          </p>
+          <!-- Example placeholders
+          <p><strong>Email:</strong> <a href="mailto:hello@sowed.io">hello@sowed.io</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+1XXXXXXXXXX">(XXX) XXX-XXXX</a></p>
+          -->
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="/assets/site.js"></script>
+</body>
+</html>
 
