@@ -3,593 +3,79 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sowed Consulting, LLC | Salesforce Partner</title>
-  <meta name="description" content="We love making Salesforce work for you. Guaranteed time and resource savings." />
-
-  <style>
-    :root{
-      --bg:#0b0f1a;
-      --panel:#10182a;
-      --panel2:#0f1626;
-      --text:#e8eefc;
-      --muted:#b7c2dd;
-      --line:rgba(255,255,255,.10);
-      --shadow:0 18px 50px rgba(0,0,0,.45);
-      --radius:18px;
-      --radius2:24px;
-      --accent:#8fd3ff;
-      --accent2:#b6ffcf;
-      --btn:#ffffff;
-      --btnText:#071021;
-      --max:1120px;
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 600px at 25% -10%, rgba(143,211,255,.24), transparent 60%),
-        radial-gradient(900px 500px at 90% 10%, rgba(182,255,207,.16), transparent 55%),
-        radial-gradient(900px 600px at 40% 110%, rgba(143,211,255,.12), transparent 60%),
-        var(--bg);
-      color:var(--text);
-      line-height:1.45;
-    }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
-
-    /* Sticky top bar */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,15,26,.62);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width:190px;
-    }
-    .logo{
-      width:40px; height:40px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(143,211,255,.9), rgba(182,255,207,.9));
-      box-shadow: 0 10px 30px rgba(143,211,255,.14);
-      display:grid; place-items:center;
-      font-weight:900; color:#06101f;
-      letter-spacing:.6px;
-    }
-    .brandText{display:flex; flex-direction:column; line-height:1.1}
-    .brandText .t{font-size:15px; font-weight:900; letter-spacing:.7px}
-    .brandText .s{font-size:12px; color:var(--muted)}
-
-    .navLinks{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      justify-content:center;
-    }
-    .navItem{position:relative}
-    .navBtn{
-      border:1px solid transparent;
-      background:transparent;
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:12px;
-      font-weight:700;
-      font-size:13px;
-      cursor:pointer;
-    }
-    .navBtn:hover{border-color:var(--line); background:rgba(255,255,255,.04)}
-    .menu{
-      position:absolute; top:48px; left:0;
-      width:260px;
-      background: rgba(16,24,42,.98);
-      border:1px solid var(--line);
-      border-radius:16px;
-      box-shadow: var(--shadow);
-      padding:8px;
-      display:none;
-    }
-    .navItem:hover .menu{display:block}
-    .menu a{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:10px 10px;
-      border-radius:12px;
-      color:var(--text);
-    }
-    .menu a:hover{background:rgba(255,255,255,.06)}
-    .menu small{display:block; color:var(--muted); font-weight:600; margin-top:2px}
-    .menu .k{font-weight:800}
-
-    .navCtas{display:flex; align-items:center; gap:10px; min-width:220px; justify-content:flex-end}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border-radius:14px;
-      font-weight:900;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
-      color:var(--text);
-      cursor:pointer;
-    }
-    .btn:hover{background:rgba(255,255,255,.10)}
-    .btnPrimary{
-      background: linear-gradient(135deg, rgba(143,211,255,.96), rgba(182,255,207,.96));
-      color:var(--btnText);
-      border-color:transparent;
-    }
-    .btnPrimary:hover{filter:brightness(1.03)}
-
-    /* Hero */
-    .hero{padding:56px 0 26px}
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:22px;
-      align-items:stretch;
-    }
-    .heroCard{
-      background: rgba(16,24,42,.55);
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      padding:28px;
-      overflow:hidden;
-      position:relative;
-    }
-    .heroCard:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background:
-        radial-gradient(520px 240px at 15% 10%, rgba(143,211,255,.18), transparent 60%),
-        radial-gradient(420px 220px at 90% 30%, rgba(182,255,207,.14), transparent 58%);
-      pointer-events:none;
-    }
-    .heroInner{position:relative}
-    .eyebrow{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid var(--line);
-      color:var(--muted);
-      font-weight:800;
-      font-size:12px;
-      letter-spacing:.5px;
-    }
-    h1{
-      margin:14px 0 6px;
-      font-size:44px;
-      line-height:1.05;
-      letter-spacing:-.8px;
-    }
-    .sub{
-      font-size:16px;
-      color:var(--muted);
-      max-width:62ch;
-      margin:10px 0 16px;
-      font-weight:650;
-    }
-    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
-    .heroAside{
-      display:grid; gap:12px;
-    }
-    .asideCard{
-      background: rgba(16,24,42,.55);
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      padding:18px;
-      box-shadow: var(--shadow);
-    }
-    .asideCard h3{margin:0 0 6px; font-size:14px; letter-spacing:.2px}
-    .asideCard p{margin:0; color:var(--muted); font-weight:650; font-size:13px}
-    .badgeRow{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top:12px
-    }
-    .badge{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--muted);
-      font-weight:800;
-      font-size:12px;
-    }
-
-    /* “Simplicity...” section */
-    .section{padding:26px 0}
-    .sectionTitle{
-      margin:0;
-      font-size:28px;
-      letter-spacing:-.3px;
-    }
-    .sectionLead{
-      margin:10px 0 0;
-      color:var(--muted);
-      font-weight:650;
-      max-width:92ch;
-    }
-
-    /* Service tiles */
-    .tiles{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:14px;
-      margin-top:18px;
-    }
-    .tile{
-      background: rgba(16,24,42,.50);
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:16px;
-      box-shadow: var(--shadow);
-      display:flex; flex-direction:column; gap:10px;
-      min-height:170px;
-      transition: transform .15s ease, background .15s ease;
-    }
-    .tile:hover{transform: translateY(-2px); background: rgba(16,24,42,.62)}
-    .tileIcon{
-      width:44px; height:44px; border-radius:14px;
-      background:rgba(255,255,255,.06);
-      border:1px solid var(--line);
-      display:grid; place-items:center;
-      font-weight:900;
-      color:var(--accent);
-    }
-    .tile h4{margin:0; font-size:14px}
-    .tile p{margin:0; color:var(--muted); font-weight:650; font-size:13px}
-    .tile a.more{
-      margin-top:auto;
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      font-weight:900;
-      font-size:13px;
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.04);
-      width:fit-content;
-    }
-    .tile a.more:hover{background:rgba(255,255,255,.08)}
-
-    /* Testimonial */
-    .quote{
-      margin-top:18px;
-      background: rgba(16,24,42,.55);
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      padding:22px;
-      box-shadow: var(--shadow);
-    }
-    blockquote{margin:0; padding:0; color:var(--text); font-weight:700}
-    .qmeta{margin-top:10px; color:var(--muted); font-weight:750; font-size:13px}
-
-    /* Credentials strip */
-    .strip{
-      margin-top:18px;
-      display:flex; flex-wrap:wrap; gap:10px;
-    }
-    .cert{
-      flex: 1 1 150px;
-      min-width:150px;
-      background: rgba(255,255,255,.04);
-      border:1px solid var(--line);
-      border-radius: 16px;
-      padding:12px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--muted);
-      font-weight:900;
-      letter-spacing:.3px;
-      text-align:center;
-    }
-
-    /* Footer */
-    footer{
-      padding:28px 0 36px;
-      border-top:1px solid var(--line);
-      margin-top:24px;
-      background: rgba(11,15,26,.55);
-    }
-    .footerGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:18px;
-      align-items:start;
-    }
-    .fine{color:var(--muted); font-weight:650; font-size:13px}
-    .footCard{
-      background: rgba(16,24,42,.50);
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      padding:16px;
-      box-shadow: var(--shadow);
-    }
-    .footCard h4{margin:0 0 10px}
-    .kv{display:grid; gap:8px; color:var(--muted); font-weight:700; font-size:13px}
-    .kv b{color:var(--text)}
-    .social{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
-    .pill{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.04);
-      font-weight:900;
-      font-size:13px;
-    }
-    .pill:hover{background:rgba(255,255,255,.08)}
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .heroGrid{grid-template-columns:1fr}
-      h1{font-size:40px}
-      .tiles{grid-template-columns: repeat(2, 1fr)}
-      .navLinks{display:none}
-    }
-    @media (max-width: 560px){
-      h1{font-size:34px}
-      .tiles{grid-template-columns: 1fr}
-      .navCtas{min-width:auto}
-    }
-  </style>
+  <title>Sowed Consulting, LLC | Salesforce Consulting</title>
+  <meta name="description" content="Full-service Salesforce consulting: new org builds, revamps, data migration, DevOps CI/CD standardization, and automation testing." />
+  <link rel="stylesheet" href="/assets/styles.css" />
 </head>
-
 <body>
-  <!-- Top Nav -->
-  <header class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="#">
-          <div class="logo">S</div>
-          <div class="brandText">
-            <div class="t">SOWED.IO</div>
-            <div class="s">Salesforce Consulting Partner</div>
-          </div>
-        </a>
 
-        <nav class="navLinks" aria-label="Primary">
-          <div class="navItem">
-            <button class="navBtn" type="button">Home</button>
-          </div>
+  <!-- Shared header injection point -->
+  <div id="site-header"></div>
 
-          <div class="navItem">
-            <button class="navBtn" type="button">Services</button>
-            <div class="menu" role="menu" aria-label="Services">
-              <a href="#services"><span class="k">Configure a New Salesforce</span><small>Greenfield org setup, strategy, security</small></a>
-              <a href="#services"><span class="k">Configure an Existing Salesforce</span><small>Fix fundamentals, simplify, scale</small></a>
-              <a href="#services"><span class="k">CPQ Data Migration</span><small>Vlocity / CPQ-first migration patterns</small></a>
-              <a href="#services"><span class="k">Data Tooling</span><small>Loader, VS Code workflows, governance</small></a>
-              <a href="#services"><span class="k">DevOps Tooling</span><small>CI/CD, branching, release orchestration</small></a>
-              <a href="#services"><span class="k">Integration</span><small>APIs, middleware, event-driven patterns</small></a>
-              <a href="#services"><span class="k">Org Consolidation</span><small>Multi-org to fewer orgs, safely</small></a>
-              <a href="#services"><span class="k">Salesforce Architecture</span><small>Target-state + operating model</small></a>
-              <a href="#services"><span class="k">Transition to Flow</span><small>Retire legacy automation</small></a>
-              <a href="#services"><span class="k">Transition to Lightning</span><small>UI modernization + adoption</small></a>
-              <a href="#services"><span class="k">Your Salesforce Expert</span><small>Embedded leadership + delivery</small></a>
-            </div>
-          </div>
+  <main class="hero">
+    <div class="container hero-grid">
+      <section>
+        <div class="hero-kicker">Full-service Salesforce consulting</div>
+        <h1>Build. Modernize. Automate. Ship with confidence.</h1>
+        <p>
+          Sowed Consulting helps SMB and mid-market teams deliver a cleaner Salesforce architecture,
+          reliable deployments, and trusted data—without the chaos.
+        </p>
 
-          <div class="navItem">
-            <button class="navBtn" type="button">Learning</button>
-            <div class="menu" role="menu" aria-label="Learning">
-              <a href="#learn"><span class="k">#InvestInYou</span><small>Trailhead pathing + guided growth</small></a>
-              <a href="#learn"><span class="k">Advancement of Architecture</span><small>Modern patterns & standards</small></a>
-              <a href="#learn"><span class="k">Cert Giveaway</span><small>Community-first enablement</small></a>
-              <a href="#learn"><span class="k">Sowed Programs</span><small>Training & enablement offerings</small></a>
-            </div>
-          </div>
-
-          <div class="navItem">
-            <button class="navBtn" type="button">Company</button>
-            <div class="menu" role="menu" aria-label="Company">
-              <a href="#consult"><span class="k">Book a Consultation</span><small>Start with a fast discovery call</small></a>
-              <a href="#consult"><span class="k">Join Our Team</span><small>Careers & contractor network</small></a>
-              <a href="#credentials"><span class="k">Our Credentials</span><small>Certifications & experience</small></a>
-              <a href="#guarantee"><span class="k">Our Guarantee</span><small>Good-faith delivery + outcomes</small></a>
-            </div>
-          </div>
-
-          <div class="navItem">
-            <button class="navBtn" type="button">Sowed+</button>
-            <div class="menu" role="menu" aria-label="Sowed+">
-              <a href="#blog"><span class="k">Blog</span><small>Playbooks, lessons, patterns</small></a>
-              <a href="#give"><span class="k">Giving Back</span><small>Community, philanthropy, events</small></a>
-            </div>
-          </div>
-        </nav>
-
-        <div class="navCtas">
-          <a class="btn" href="#login" aria-label="Log in">Log In</a>
-          <a class="btn btnPrimary" href="#consult">Free Consultation</a>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/contact.html">Book a Call</a>
+          <a class="btn" href="/services.html">Explore Services</a>
         </div>
-      </div>
+      </section>
+
+      <aside class="hero-card" aria-label="Sowed Consulting success image">
+        <div class="hero-image">
+          <div class="hero-badges">
+            <span class="badge">New org builds</span>
+            <span class="badge">Revamps & cleanup</span>
+            <span class="badge">CI/CD standardization</span>
+            <span class="badge">Automation testing</span>
+            <span class="badge">Data migration</span>
+          </div>
+        </div>
+      </aside>
     </div>
-  </header>
 
-  <!-- Hero -->
-  <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="heroGrid">
-          <div class="heroCard">
-            <div class="heroInner">
-              <div class="eyebrow">Sowed Consulting, LLC • Salesforce Consulting Partner</div>
-              <h1>We love making<br/>Salesforce work for you!</h1>
-              <div class="sub">
-                Guaranteed time and resource savings. If your team is struggling with Salesforce, it’s often a configuration
-                and operating-model problem — not a platform problem. We embed with your team and simplify the system so people actually enjoy using it.
-              </div>
-              <div class="heroActions">
-                <a class="btn btnPrimary" href="#consult">Free Consultation</a>
-                <a class="btn" href="#services">View Services</a>
-              </div>
+    <div class="container">
+      <section class="cards" aria-label="Core service areas">
+        <article class="card">
+          <h3>New org builds & architecture</h3>
+          <p>Right-sized data model, security, environments, and scalable foundations for growth.</p>
+        </article>
 
-              <div class="badgeRow" aria-label="Highlights">
-                <span class="badge">Simplicity-first delivery</span>
-                <span class="badge">Architecture + execution</span>
-                <span class="badge">Enablement built-in</span>
-              </div>
-            </div>
-          </div>
+        <article class="card">
+          <h3>Revamp legacy orgs</h3>
+          <p>Refactor cluttered automation, streamline objects, and reduce tech debt with governance.</p>
+        </article>
 
-          <div class="heroAside">
-            <div class="asideCard">
-              <h3>SIMPLICITY is the new SOPHISTICATION</h3>
-              <p>Modernize your Salesforce so it’s scalable, measurable, and frictionless for users.</p>
-            </div>
-            <div class="asideCard">
-              <h3>Salesforce Partner</h3>
-              <p>Built on best practices, guardrails, and outcome-driven delivery.</p>
-            </div>
-            <div class="asideCard">
-              <h3>Let’s build systems your team will enjoy using</h3>
-              <p>From quick wins to multi-quarter transformations.</p>
-              <div style="margin-top:10px">
-                <a class="btn btnPrimary" href="#consult">Free Consultation</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <article class="card">
+          <h3>Data migration & data management</h3>
+          <p>Repeatable loads, validation, mapping, and cutover plans—minimizing downtime and risk.</p>
+        </article>
 
-    <!-- Value proposition -->
-    <section class="section" id="guarantee">
-      <div class="wrap">
-        <h2 class="sectionTitle">Guaranteed time and resource savings</h2>
-        <p class="sectionLead">
-          We partner with you to optimize configuration, streamline operations, and improve adoption.
-          The goal is measurable improvement in either your time resource or capital resource — and we keep pushing until the agreed outcomes are delivered.
-        </p>
-      </div>
-    </section>
+        <article class="card">
+          <h3>DevOps CI/CD deployment</h3>
+          <p>Branching strategy, pipelines, packaging/release process, and environment standardization.</p>
+        </article>
 
-    <!-- Services tiles (4-up like homepage) -->
-    <section class="section" id="services">
-      <div class="wrap">
-        <h2 class="sectionTitle">Services</h2>
-        <p class="sectionLead">Start where you are — new org, existing org, or specialized tooling and migration.</p>
+        <article class="card">
+          <h3>Testing & quality automation</h3>
+          <p>Regression coverage that catches breakages early—less fire-drills, more predictability.</p>
+        </article>
 
-        <div class="tiles">
-          <article class="tile">
-            <div class="tileIcon">SF</div>
-            <h4>New Salesforce Customers</h4>
-            <p>Greenfield setup, data model, security, automation standards, and a clean operating model from day one.</p>
-            <a class="more" href="#consult">Read More →</a>
-          </article>
-
-          <article class="tile">
-            <div class="tileIcon">⚙</div>
-            <h4>Existing Salesforce Customers</h4>
-            <p>Fix fundamentals, simplify automation, clean up data, and harden governance so the org scales.</p>
-            <a class="more" href="#consult">Read More →</a>
-          </article>
-
-          <article class="tile">
-            <div class="tileIcon">DB</div>
-            <h4>Sowed Data Tooling</h4>
-            <p>Repeatable migration patterns, loader/VS Code workflows, and safe bulk data operations.</p>
-            <a class="more" href="#consult">Read More →</a>
-          </article>
-
-          <article class="tile">
-            <div class="tileIcon">CI</div>
-            <h4>Sowed DevOps Tooling</h4>
-            <p>CI/CD pipelines, release orchestration, environment strategy, and deployment guardrails.</p>
-            <a class="more" href="#consult">Read More →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonial -->
-    <section class="section" id="testimonials">
-      <div class="wrap">
-        <h2 class="sectionTitle">What clients say</h2>
-        <div class="quote">
-          <blockquote>
-            “Sowed consistently demonstrated exceptional management skills and a genuine passion for the Salesforce ecosystem.
-            Their energetic and caring approach fostered open communication, collaboration, and continuous improvement.”
-          </blockquote>
-          <div class="qmeta">— S.K., Salesforce Architect</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Credentials strip -->
-    <section class="section" id="credentials">
-      <div class="wrap">
-        <h2 class="sectionTitle">Credentials</h2>
-        <p class="sectionLead">Replace these placeholders with your certification images or badges.</p>
-
-        <div class="strip" aria-label="Certifications">
-          <div class="cert">Salesforce Certification</div>
-          <div class="cert">Salesforce Certification</div>
-          <div class="cert">Salesforce Certification</div>
-          <div class="cert">Salesforce Certification</div>
-          <div class="cert">Salesforce Certification</div>
-          <div class="cert">Salesforce Certification</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Consultation -->
-    <section class="section" id="consult">
-      <div class="wrap">
-        <h2 class="sectionTitle">Free Consultation</h2>
-        <p class="sectionLead">
-          Add your booking link here (Calendly, HubSpot, etc.). This button can point to your real scheduling URL.
-        </p>
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
-          <a class="btn btnPrimary" href="mailto:success@sowed.io">Email: success@sowed.io</a>
-          <a class="btn" href="tel:+17176781133">Call/Text: (717) 678-1133</a>
-        </div>
-      </div>
-    </section>
+        <article class="card">
+          <h3>Delivery & enablement</h3>
+          <p>Documentation, training, and playbooks so your team can operate confidently after go-live.</p>
+        </article>
+      </section>
+    </div>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="wrap">
-      <div class="footerGrid">
-        <div class="footCard">
-          <h4>SOWED.IO</h4>
-          <div class="fine">
-            We are Salesforce experts who partner with you to bring your ideas to life, modernize operations, and grow your business.
-          </div>
-          <div class="social">
-            <a class="pill" href="#" aria-label="Salesforce AppExchange">AppExchange</a>
-            <a class="pill" href="#" aria-label="LinkedIn">LinkedIn</a>
-            <a class="pill" href="#" aria-label="YouTube">YouTube</a>
-          </div>
-          <div class="fine" style="margin-top:14px">
-            © <span id="y"></span> Sowed Consulting, LLC. All rights reserved.
-          </div>
-        </div>
-
-        <div class="footCard">
-          <h4>Contact</h4>
-          <div class="kv">
-            <div><b>Address:</b> Harrisburg, PA</div>
-            <div><b>Text or Call:</b> (717) 678-1133</div>
-            <div><b>Email:</b> success@sowed.io</div>
-          </div>
-          <div style="margin-top:14px">
-            <a class="btn btnPrimary" href="#consult">Free Consultation</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  <script src="/assets/site.js"></script>
 </body>
 </html>
