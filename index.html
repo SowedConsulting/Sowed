@@ -1,81 +1,715 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sowed Consulting, LLC | Salesforce Consulting</title>
-  <meta name="description" content="Full-service Salesforce consulting: new org builds, revamps, data migration, DevOps CI/CD standardization, and automation testing." />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sowed Consulting | Salesforce Consulting Partner</title>
+  <meta
+    name="description"
+    content="Sowed Consulting, LLC helps teams optimize Salesforce with strategic configuration, tooling, and architecture expertise."
+  />
+  <style>
+    :root {
+      --bg: #0b0f16;
+      --bg-soft: #111826;
+      --panel: #151f2f;
+      --panel-2: #1b2940;
+      --border: rgba(255,255,255,0.08);
+      --text: #f4f7fb;
+      --muted: #b7c2d4;
+      --gold: #d4af37;
+      --blue: #4ea1ff;
+      --blue-dark: #1d5da8;
+      --shadow: 0 18px 50px rgba(0,0,0,.28);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(78,161,255,.16), transparent 32%),
+        linear-gradient(180deg, #08111d 0%, #0b0f16 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+    .section { padding: 5rem 0; }
+    .eyebrow {
+      display: inline-block;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      margin-bottom: .75rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.05;
+      margin: 0 0 1rem;
+    }
+    .section-copy {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .95rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #f0d67d);
+      color: #1a1a1a;
+      box-shadow: 0 12px 30px rgba(212,175,55,.22);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(8, 13, 21, .74);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      font-weight: 800;
+      letter-spacing: .01em;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), #a77d10);
+      color: #121212;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: var(--shadow);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: .95rem;
+    }
+    .nav a:hover { color: var(--text); }
+
+    .hero {
+      padding: 5.5rem 0 4rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .hero-copy {
+      padding: 2rem 0;
+    }
+    .hero-copy h1 {
+      font-size: clamp(2.7rem, 6vw, 5.2rem);
+      line-height: .96;
+      margin: 0 0 1rem;
+      letter-spacing: -.04em;
+    }
+    .hero-copy p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 0 1.5rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badges {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+    }
+    .pill {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: .55rem .9rem;
+      font-weight: 600;
+      font-size: .9rem;
+    }
+    .hero-visual {
+      min-height: 520px;
+      padding: 1rem;
+      background:
+        linear-gradient(180deg, rgba(78,161,255,.14), rgba(255,255,255,.03)),
+        linear-gradient(135deg, var(--panel), var(--panel-2));
+      position: relative;
+    }
+    .hero-stack {
+      height: 100%;
+      display: grid;
+      gap: 1rem;
+      grid-template-rows: 1.2fr .8fr;
+    }
+    .dashboard, .mini-panels {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(8, 18, 32, .56);
+    }
+    .dashboard {
+      padding: 1.25rem;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 1rem;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .9rem;
+    }
+    .stat {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 16px;
+      padding: 1rem;
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.65rem;
+      margin-bottom: .25rem;
+    }
+    .stat span {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    .process {
+      border-radius: 16px;
+      padding: 1rem;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .process h3, .dashboard h3 {
+      margin: 0 0 .85rem;
+      font-size: 1rem;
+    }
+    .steps {
+      display: grid;
+      gap: .75rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .steps li {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .step-num {
+      flex: 0 0 28px;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-size: .85rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold), #b9901a);
+      color: #121212;
+    }
+    .mini-panels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .mini-card {
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      padding: 1rem;
+    }
+    .mini-card h4 {
+      margin: 0 0 .4rem;
+      font-size: 1rem;
+    }
+    .mini-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .service-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.35rem;
+      box-shadow: var(--shadow);
+    }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(212,175,55,.28), rgba(78,161,255,.35));
+      border: 1px solid rgba(255,255,255,.08);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      margin: 0 0 .65rem;
+      font-size: 1.15rem;
+    }
+    .service-card p {
+      color: var(--muted);
+      margin: 0 0 1rem;
+      font-size: .96rem;
+    }
+    .service-card a {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .about-wrap {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-panel, .testimonial, .contact-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .about-panel {
+      padding: 2rem;
+      min-height: 100%;
+    }
+    .about-list {
+      display: grid;
+      gap: .9rem;
+      padding: 0;
+      margin: 1.25rem 0 0;
+      list-style: none;
+    }
+    .about-list li {
+      color: var(--muted);
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .about-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .58rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+    .about-art {
+      min-height: 440px;
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+      background:
+        radial-gradient(circle at top left, rgba(212,175,55,.17), transparent 35%),
+        linear-gradient(135deg, #162233, #101725);
+    }
+    .quote-block {
+      padding: 1.25rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+    }
+    .quote-block p {
+      margin: 0 0 .7rem;
+      color: var(--muted);
+    }
+
+    .testimonial {
+      padding: 2rem;
+    }
+    .testimonial blockquote {
+      margin: 0;
+      font-size: 1.12rem;
+      color: var(--text);
+    }
+    .testimonial p {
+      color: var(--muted);
+      margin: 1rem 0 0;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: .9rem;
+      margin-top: 2rem;
+    }
+    .cert {
+      padding: 1rem .65rem;
+      text-align: center;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: .85rem;
+      font-weight: 700;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .contact-card {
+      padding: 1.5rem;
+    }
+    .contact-card h3 {
+      margin: 0 0 .55rem;
+    }
+    .contact-card p, .contact-card a {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+    }
+    .footer-bar {
+      border-top: 1px solid var(--border);
+      padding-top: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .about-wrap,
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cert-grid { grid-template-columns: repeat(4, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
+      .mini-panels { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .nav { display: none; }
+      .hero { padding-top: 3.5rem; }
+      .services-grid,
+      .cert-grid,
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-copy h1 { font-size: 2.5rem; }
+      .section { padding: 4rem 0; }
+      .header-inner { min-height: 70px; }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Shared header injection point -->
-  <div id="site-header"></div>
-
-  <main class="hero">
-    <div class="container hero-grid">
-      <section>
-        <div class="hero-kicker">Full-service Salesforce consulting</div>
-        <h1>Build. Modernize. Automate. Ship with confidence.</h1>
-        <p>
-          Sowed Consulting helps SMB and mid-market teams deliver a cleaner Salesforce architecture,
-          reliable deployments, and trusted data—without the chaos.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="/contact.html">Book a Call</a>
-          <a class="btn" href="/services.html">Explore Services</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="Sowed Consulting home">
+        <div class="brand-mark">S</div>
+        <div>
+          <div>Sowed Consulting</div>
+          <small style="color: var(--muted); font-weight: 600;">Salesforce Consulting Partner</small>
         </div>
-      </section>
+      </a>
 
-      <aside class="hero-card" aria-label="Sowed Consulting success image">
-        <div class="hero-image">
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#results">Results</a>
+        <a href="#credentials">Credentials</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn-primary">Free Consultation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">We love making Salesforce work for you</span>
+          <h1>SIMPLICITY is the new SOPHISTICATION</h1>
+          <p>
+            Sowed Consulting, LLC is a Salesforce consulting partner focused on better configuration,
+            cleaner architecture, stronger tooling, and measurable efficiency gains for your team.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Free Consultation</a>
+            <a href="#services" class="btn btn-secondary">Explore Services</a>
+          </div>
           <div class="hero-badges">
-            <span class="badge">New org builds</span>
-            <span class="badge">Revamps & cleanup</span>
-            <span class="badge">CI/CD standardization</span>
-            <span class="badge">Automation testing</span>
-            <span class="badge">Data migration</span>
+            <span class="pill">Guaranteed Time and Resource Savings</span>
+            <span class="pill">Salesforce Partner</span>
+            <span class="pill">Architecture • Integrations • Data</span>
           </div>
         </div>
-      </aside>
+
+        <div class="hero-card hero-visual">
+          <div class="hero-stack">
+            <div class="dashboard">
+              <div>
+                <h3>Operational impact</h3>
+                <div class="stat-grid">
+                  <div class="stat">
+                    <strong>Faster</strong>
+                    <span>Cleaner processes and less user friction</span>
+                  </div>
+                  <div class="stat">
+                    <strong>Smarter</strong>
+                    <span>Better automation and stronger architecture</span>
+                  </div>
+                  <div class="stat">
+                    <strong>Safer</strong>
+                    <span>Data stewardship and scalable governance</span>
+                  </div>
+                  <div class="stat">
+                    <strong>Clearer</strong>
+                    <span>Documentation, SOPs, and team enablement</span>
+                  </div>
+                </div>
+              </div>
+              <div class="process">
+                <h3>How we engage</h3>
+                <ol class="steps">
+                  <li><span class="step-num">1</span><span>Audit your current Salesforce usage and friction points.</span></li>
+                  <li><span class="step-num">2</span><span>Design a practical path using best practices and current platform capabilities.</span></li>
+                  <li><span class="step-num">3</span><span>Implement, document, and train your team for long-term adoption.</span></li>
+                </ol>
+              </div>
+            </div>
+            <div class="mini-panels">
+              <div class="mini-card">
+                <h4>New Salesforce</h4>
+                <p>Stand up a clean foundation the right way the first time.</p>
+              </div>
+              <div class="mini-card">
+                <h4>Existing Orgs</h4>
+                <p>Refactor legacy complexity into simpler, maintainable systems.</p>
+              </div>
+              <div class="mini-card">
+                <h4>Tooling</h4>
+                <p>Improve release quality with DevOps, data tooling, and governance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <span class="eyebrow">Core services</span>
+        <h2 class="section-title">Build systems your team will actually enjoy using</h2>
+        <p class="section-copy">
+          This GitHub Pages version mirrors the structure of your current homepage while using a
+          cleaner static layout that is easy to host, edit, and extend.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">01</div>
+            <h3>Configure a New Salesforce</h3>
+            <p>Launch with scalable objects, automation, security, reporting, and user-ready processes.</p>
+            <a href="#contact">Read More</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">02</div>
+            <h3>Configure an Existing Salesforce</h3>
+            <p>Untangle technical debt, improve usability, and modernize legacy automation patterns.</p>
+            <a href="#contact">Read More</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">03</div>
+            <h3>Data Tooling & Migration</h3>
+            <p>Support migrations, remediation, quality controls, and repeatable data operations.</p>
+            <a href="#contact">Read More</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">04</div>
+            <h3>DevOps & Architecture</h3>
+            <p>Strengthen release management, environment strategy, and enterprise-grade design decisions.</p>
+            <a href="#contact">Read More</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-wrap">
+        <div class="about-panel">
+          <span class="eyebrow">About Sowed Consulting</span>
+          <h2 class="section-title">A strategic Salesforce partner, not just a ticket taker</h2>
+          <p class="section-copy">
+            Your live homepage says the team partners with clients to be “sowed” within the organization,
+            using current technologies and best practices to improve engagement, productivity, and the bottom line.
+          </p>
+          <ul class="about-list">
+            <li>Salesforce strategy aligned to real business operations.</li>
+            <li>Configuration and architecture built for maintainability.</li>
+            <li>Integrations, data migration, and data management expertise.</li>
+            <li>Training and enablement so your team can own the system after launch.</li>
+          </ul>
+        </div>
+
+        <div class="about-panel about-art">
+          <div class="quote-block">
+            <strong style="display:block; margin-bottom:.5rem;">What this static version is optimized for</strong>
+            <p>Fast loading on GitHub Pages</p>
+            <p>Simple edits in a single <code>index.html</code> file</p>
+            <p>Responsive layout without build tooling</p>
+          </div>
+          <div class="quote-block">
+            <strong style="display:block; margin-bottom:.5rem;">Next upgrade path</strong>
+            <p>Split into <code>index.html</code>, <code>styles.css</code>, and an <code>assets</code> folder for logos and brand images.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="container">
+        <span class="eyebrow">Client voice</span>
+        <div class="testimonial">
+          <blockquote>
+            “I had the pleasure of working with Sowed as our software engineering lead for the Salesforce developer team. Over the past year and a half, Sowed consistently demonstrated exceptional management skills and a genuine passion for the Salesforce ecosystem.”
+          </blockquote>
+          <p>
+            Testimonial excerpt adapted from the current homepage. You can expand this into a carousel or add more client logos later.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="credentials">
+      <div class="container">
+        <span class="eyebrow">Credentials</span>
+        <h2 class="section-title">Professional certifications and platform depth</h2>
+        <p class="section-copy">
+          The current homepage presents a grid of certification badges. In this starter version,
+          use these placeholders until you drop in the real badge images.
+        </p>
+        <div class="cert-grid">
+          <div class="cert">Admin</div>
+          <div class="cert">Advanced Admin</div>
+          <div class="cert">App Builder</div>
+          <div class="cert">Platform Dev I</div>
+          <div class="cert">Platform Dev II</div>
+          <div class="cert">Sales Cloud</div>
+          <div class="cert">Service Cloud</div>
+          <div class="cert">CPQ</div>
+          <div class="cert">Data Architecture</div>
+          <div class="cert">Sharing & Visibility</div>
+          <div class="cert">Integration</div>
+          <div class="cert">Application Architecture</div>
+          <div class="cert">System Architecture</div>
+          <div class="cert">Consultant</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h2 class="section-title">Start with a free consultation</h2>
+        <p class="section-copy">
+          The current homepage lists Harrisburg, PA, a phone number, and the success@sowed.io email.
+        </p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Address</h3>
+            <p>Harrisburg, PA</p>
+          </div>
+          <div class="contact-card">
+            <h3>Text or Call</h3>
+            <a href="tel:+17176781133">(717) 678-1133</a>
+          </div>
+          <div class="contact-card">
+            <h3>Email</h3>
+            <a href="mailto:success@sowed.io">success@sowed.io</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bar">
+      <div>© 2026 Sowed Consulting, LLC. All rights reserved.</div>
+      <div>Salesforce experts helping modernize operations and grow your business.</div>
     </div>
-
-    <div class="container">
-      <section class="cards" aria-label="Core service areas">
-        <article class="card">
-          <h3>New org builds & architecture</h3>
-          <p>Right-sized data model, security, environments, and scalable foundations for growth.</p>
-        </article>
-
-        <article class="card">
-          <h3>Revamp legacy orgs</h3>
-          <p>Refactor cluttered automation, streamline objects, and reduce tech debt with governance.</p>
-        </article>
-
-        <article class="card">
-          <h3>Data migration & data management</h3>
-          <p>Repeatable loads, validation, mapping, and cutover plans—minimizing downtime and risk.</p>
-        </article>
-
-        <article class="card">
-          <h3>DevOps CI/CD deployment</h3>
-          <p>Branching strategy, pipelines, packaging/release process, and environment standardization.</p>
-        </article>
-
-        <article class="card">
-          <h3>Testing & quality automation</h3>
-          <p>Regression coverage that catches breakages early—less fire-drills, more predictability.</p>
-        </article>
-
-        <article class="card">
-          <h3>Delivery & enablement</h3>
-          <p>Documentation, training, and playbooks so your team can operate confidently after go-live.</p>
-        </article>
-      </section>
-    </div>
-  </main> 
-
-  <script src="assets/site.js"></script>
+  </footer>
 </body>
 </html>
